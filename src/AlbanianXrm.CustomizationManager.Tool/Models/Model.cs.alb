@@ -1,0 +1,12 @@
+╠╦═solution
+║╠╦═Attributes
+║║╠═friendlyname
+║║╠═solutionid
+║║╠═uniquename
+╠╦═solutioncomponent
+║╠╦═Attributes
+║║╠═componenttype
+║║╠═ismetadata
+║║╠═objectid
+║║╠═solutioncomponentid
+║║╠═solutionid

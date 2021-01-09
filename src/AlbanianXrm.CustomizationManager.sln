@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlbanianXrm.CustomizationManager", "AlbanianXrm.CustomizationManager\AlbanianXrm.CustomizationManager.csproj", "{DC653DF0-B18A-4EF3-941F-D2A5F0D63922}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{3CCC1453-0CC6-4A5C-8925-64B211434D9A}"
+	ProjectSection(SolutionItems) = preProject
+		AlbanianXrm.CustomizationManager.Version.props = AlbanianXrm.CustomizationManager.Version.props
+		..\azure-pipelines.yml = ..\azure-pipelines.yml
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlbanianXrm.CustomizationManager.XrmToolBox", "AlbanianXrm.CustomizationManager.XrmToolBox\AlbanianXrm.CustomizationManager.XrmToolBox.csproj", "{9FCA223B-5B1D-4022-8ADB-2CA4847BEAFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlbanianXrm.CustomizationManager.Tool", "AlbanianXrm.CustomizationManager.Tool\AlbanianXrm.CustomizationManager.Tool.csproj", "{29A861A7-6259-4641-B5AB-7C0DACA56E9C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlbanianXrm.CustomizationManager.Tool.Tests", "AlbanianXrm.CustomizationManager.Tool.Tests\AlbanianXrm.CustomizationManager.Tool.Tests.csproj", "{4249E53E-37C4-47AE-93C0-2C16BAFBBF73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC653DF0-B18A-4EF3-941F-D2A5F0D63922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC653DF0-B18A-4EF3-941F-D2A5F0D63922}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC653DF0-B18A-4EF3-941F-D2A5F0D63922}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC653DF0-B18A-4EF3-941F-D2A5F0D63922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FCA223B-5B1D-4022-8ADB-2CA4847BEAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FCA223B-5B1D-4022-8ADB-2CA4847BEAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FCA223B-5B1D-4022-8ADB-2CA4847BEAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FCA223B-5B1D-4022-8ADB-2CA4847BEAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29A861A7-6259-4641-B5AB-7C0DACA56E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29A861A7-6259-4641-B5AB-7C0DACA56E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29A861A7-6259-4641-B5AB-7C0DACA56E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29A861A7-6259-4641-B5AB-7C0DACA56E9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4249E53E-37C4-47AE-93C0-2C16BAFBBF73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4249E53E-37C4-47AE-93C0-2C16BAFBBF73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4249E53E-37C4-47AE-93C0-2C16BAFBBF73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4249E53E-37C4-47AE-93C0-2C16BAFBBF73}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2745A560-E565-411B-ABC3-871212C6B31D}
+	EndGlobalSection
+EndGlobal
