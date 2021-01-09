@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AlbanianXrm.CustomizationManager.XrmToolBox</id>
+    <version>$version$</version>
+    <title>Albanian Customization Manager</title>
+    <authors>Betim Beja</authors>
+    <owners>Betim Beja, AlbanianXrm</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/albanian-xrm/customization-manager</projectUrl>
+    <repository type="git" url="https://github.com/albanian-xrm/customization-manager" />
+    <iconUrl>https://raw.githubusercontent.com/albanian-xrm/customization-manager/main/Logo_80x80.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An XrmToolBox tool that helps finding customizations in your organization and managing solutions.</description>
+    <releaseNotes>
+v$version$: Working on Minimum Viable Product
+
+* For older releases go here: https://github.com/albanian-xrm/customization-manager/releases </releaseNotes>
+    <copyright>Copyright 2021</copyright>
+    <tags>XrmToolBox Plugins Xrm AlbanianXrm CustomizationManager</tags>
+    <dependencies>
+      <dependency id="XrmToolBox" version="1.2019.2.30" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\net462\XrmToolBox\plugins\AlbanianXrm.CustomizationManager.dll" target="lib\net462\plugins" />
+    <file src="bin\Release\net462\XrmToolBox\plugins\AlbanianXrm.CustomizationManager\AlbanianXrm.CustomizationManager.Tool.dll" target="lib\net462\plugins\AlbanianXrm.CustomizationManager" />
+  </files>
+</package>

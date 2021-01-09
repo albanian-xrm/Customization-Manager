@@ -44,6 +44,16 @@ steps:
     msbuildArguments: '/p:Version=$(MyVars.BuildNumber)'
   displayName: 'Building Solution'
 
+- task: VSTest@2
+  displayName: 'Unit Tests'
+  inputs:
+    testAssemblyVer2: |
+     **\*Tests.dll
+     !**\obj\**
+    codeCoverageEnabled: true
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
 - task: SonarCloudAnalyze@1
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')  
 

@@ -43,45 +43,45 @@ namespace AlbanianXrm.CustomizationManager
             toolViewModel.OrganizationService = newService;
         }
 
-        public void WorkAsync(IWorkAsyncWrapper workAsyncWrapper)
+        public void WorkAsync(IWorkAsyncWrapper info)
         {
-            if (workAsyncWrapper == null) throw new ArgumentNullException(nameof(workAsyncWrapper));
+            if (info == null) throw new ArgumentNullException(nameof(info));
             var workAsyncInfo = new WorkAsyncInfo();
-            if (workAsyncWrapper.AsyncArgument != null)
+            if (info.AsyncArgument != null)
             {
-                workAsyncInfo.AsyncArgument = workAsyncWrapper.AsyncArgument;
+                workAsyncInfo.AsyncArgument = info.AsyncArgument;
             }
-            if (workAsyncWrapper.Host != null)
+            if (info.Host != null)
             {
-                workAsyncInfo.Host = workAsyncWrapper.Host;
+                workAsyncInfo.Host = info.Host;
             }
-            if (workAsyncWrapper.IsCancelable)
+            if (info.IsCancelable)
             {
-                workAsyncInfo.IsCancelable = workAsyncWrapper.IsCancelable;
+                workAsyncInfo.IsCancelable = info.IsCancelable;
             }
-            if (workAsyncWrapper.Message != null)
+            if (info.Message != null)
             {
-                workAsyncInfo.Message = workAsyncWrapper.Message;
+                workAsyncInfo.Message = info.Message;
             }          
-            if (workAsyncWrapper.MessageHeight > 0)
+            if (info.MessageHeight > 0)
             {
-                workAsyncInfo.MessageHeight = workAsyncWrapper.MessageHeight;
+                workAsyncInfo.MessageHeight = info.MessageHeight;
             }
-            if (workAsyncWrapper.MessageWidth > 0)
+            if (info.MessageWidth > 0)
             {
-                workAsyncInfo.MessageWidth = workAsyncWrapper.MessageWidth;
+                workAsyncInfo.MessageWidth = info.MessageWidth;
             }
-            if (workAsyncWrapper.PostWorkCallBack != null)
+            if (info.PostWorkCallBack != null)
             {
-                workAsyncInfo.PostWorkCallBack = workAsyncWrapper.PostWorkCallBack;
+                workAsyncInfo.PostWorkCallBack = info.PostWorkCallBack;
             }
-            if (workAsyncWrapper.ProgressChanged != null)
+            if (info.ProgressChanged != null)
             {
-                workAsyncInfo.ProgressChanged = workAsyncWrapper.ProgressChanged;
+                workAsyncInfo.ProgressChanged = info.ProgressChanged;
             }
-            if (workAsyncWrapper.Work != null)
+            if (info.Work != null)
             {
-                workAsyncInfo.Work = workAsyncWrapper.Work;
+                workAsyncInfo.Work = info.Work;
             }
             WorkAsync(workAsyncInfo);
         }

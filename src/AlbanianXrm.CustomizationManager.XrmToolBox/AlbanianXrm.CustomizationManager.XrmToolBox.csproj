@@ -51,6 +51,6 @@
     <ProjectReference Include="..\AlbanianXrm.CustomizationManager.Tool\AlbanianXrm.CustomizationManager.Tool.csproj" />
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="IF NOT EXIST $(TargetDir)XrmToolBox mkdir $(TargetDir)XrmToolBox&#xD;&#xA;IF NOT EXIST $(TargetDir)XrmToolBox\Plugins mkdir $(TargetDir)XrmToolBox\Plugins&#xD;&#xA;IF NOT EXIST $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager mkdir $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager&#xD;&#xA;&#xD;&#xA;move /Y $(TargetDir)AlbanianXrm.CustomizationManager.dll $(TargetDir)XrmToolBox\Plugins" />
+    <Exec Command="IF NOT EXIST $(TargetDir)XrmToolBox mkdir $(TargetDir)XrmToolBox&#xD;&#xA;IF NOT EXIST $(TargetDir)XrmToolBox\Plugins mkdir $(TargetDir)XrmToolBox\Plugins&#xD;&#xA;IF NOT EXIST $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager mkdir $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager&#xD;&#xA;&#xD;&#xA;move /Y $(TargetDir)AlbanianXrm.CustomizationManager.dll $(TargetDir)XrmToolBox\Plugins&#xD;&#xA;move /Y $(TargetDir)AlbanianXrm.CustomizationManager.Tool.dll $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager" />
   </Target>
  </Project>

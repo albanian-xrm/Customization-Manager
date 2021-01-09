@@ -46,7 +46,7 @@ namespace AlbanianXrm.CustomizationManager
             var argName = args.Name.Substring(0, args.Name.IndexOf(",", StringComparison.InvariantCulture));
 
             // check to see if the failing assembly is one that we reference.
-            if (currAssembly.GetReferencedAssemblies().Where(a => a.Name == argName).FirstOrDefault() == null)
+            if (currAssembly.GetReferencedAssemblies().FirstOrDefault(a => a.Name == argName) == null)
             {
                 return null;
             }
