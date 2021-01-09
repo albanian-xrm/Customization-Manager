@@ -25,6 +25,20 @@ steps:
     projectKey: 'Albanian-Xrm_Customization-Manager'
     projectName: 'Customization-Manager'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: custom
+    custom: tool
+    arguments: install --tool-path . dotnet-reportgenerator-globaltool
+  displayName: Install ReportGenerator tool
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: custom
+    custom: tool
+    arguments: install --tool-path . coverlet.console
+  displayName: Install Coverlet.Console tool
+
 - task: NuGetToolInstaller@0
   inputs:
     versionSpec: '4.9.x' 
@@ -50,9 +64,40 @@ steps:
     testAssemblyVer2: |
      **\*Tests.dll
      !**\obj\**
-    codeCoverageEnabled: true
+    codeCoverageEnabled: false
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
+
+- task: PowerShell@2
+  inputs:
+    targetType: inline
+    script: |
+        Get-ChildItem src\*\bin\ -Include *Tests.dll -Recurse |
+        Foreach-Object { 
+            .\coverlet.exe $_.FullName --target "dotnet" --targetargs "vstest $($_.FullName) --logger:trx" --format "cobertura"
+            $NewName = $_.Name + ".coverage.cobertura.xml"
+            Rename-Item coverage.cobertura.xml $NewName
+        }
+  displayName: Generate Coverlet coverage report for test libraries
+
+- script: |
+    mkdir .\reports
+    .\reportgenerator.exe -reports:*coverage.cobertura.xml -targetdir:reports -reporttypes:"HTMLInline;HTMLChart"
+    dir .\reports
+  displayName: Create coverage reports in html format to be displayed in AzureDevOps
+
+- script: |
+    mkdir .\reports
+    .\reportgenerator.exe -reports:*coverage.cobertura.xml -targetdir:reports -reporttypes:"cobertura"
+    dir .\reports
+  displayName: Create coverage reports in xml format to be used for summary
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage to AzureDevOps'
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(system.defaultworkingdirectory)\reports\Cobertura.xml'
+    reportDirectory: '$(system.defaultworkingdirectory)\reports'
 
 - task: SonarCloudAnalyze@1
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')  
