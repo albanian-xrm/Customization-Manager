@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
 [assembly: InternalsVisibleTo("AlbanianXrm.CustomizationManager.Tool.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace AlbanianXrm.CustomizationManager
 {
 

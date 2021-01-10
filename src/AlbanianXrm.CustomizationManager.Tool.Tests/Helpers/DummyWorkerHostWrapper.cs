@@ -1,44 +1,39 @@
 ﻿using AlbanianXrm.CustomizationManager.Interfaces;
-using System;
-using System.Collections.Generic;
+using FakeItEasy;
 using System.ComponentModel;
 
 namespace AlbanianXrm.CustomizationManager.Helpers
 {
     class DummyWorkerHostWrapper : IWorkerHostWrapper
-    {
-        public int Working { get; set; }
-        private Queue<BackgroundWorker> queueWorkers = new Queue<BackgroundWorker>();
+    { 
+        public BackgroundWorker BackgroundWorker { get; set; }
+
+        public DoWorkEventArgs DoWorkEventArgs { get; set; }
+
+        public RunWorkerCompletedEventArgs RunWorkerCompletedEventArgs { get; set; }
+
+        public virtual BackgroundWorker CreateBackgroundWorker()
+        {
+            return A.Fake<BackgroundWorker>();
+        }
+
+        public virtual DoWorkEventArgs CreateWorkEventArgs(object asyncArgument)
+        {
+            return A.Fake<DoWorkEventArgs>((o) => o.WithArgumentsForConstructor(new object[] { asyncArgument }));
+        }
+
+        public virtual RunWorkerCompletedEventArgs CreateWorkCompletedEventArgs(DoWorkEventArgs doWorkEventArgs)
+        {
+            return A.Fake<RunWorkerCompletedEventArgs>();
+        }
 
         public void WorkAsync(IWorkAsyncWrapper info)
         {
-            Working += 1;
-            var backgroundWorker = new BackgroundWorker();
-            queueWorkers.Enqueue(backgroundWorker);
-
-            if (info.Work == null && info.PostWorkCallBack == null)
-            {
-                throw new Exception("No Work to be done");
-            }
-
-            backgroundWorker.DoWork += new DoWorkEventHandler((sender, args) =>
-            {
-                info.Work?.Invoke(backgroundWorker, args);
-            });
-
-            backgroundWorker.ProgressChanged += new ProgressChangedEventHandler((sender, args) =>
-            {
-                info.ProgressChanged?.Invoke(args);
-            });
-
-            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler((sender, args) =>
-            {
-                info.PostWorkCallBack?.Invoke(args);
-                queueWorkers.Dequeue();
-                Working -= 1;
-            });
-
-            backgroundWorker.RunWorkerAsync(info.AsyncArgument);
-        }
+            BackgroundWorker = CreateBackgroundWorker();
+            DoWorkEventArgs = CreateWorkEventArgs(info.AsyncArgument);
+            info.Work?.Invoke(BackgroundWorker, DoWorkEventArgs);
+            RunWorkerCompletedEventArgs = CreateWorkCompletedEventArgs(DoWorkEventArgs);
+            info.PostWorkCallBack?.Invoke(RunWorkerCompletedEventArgs);
+         }
     }
 }

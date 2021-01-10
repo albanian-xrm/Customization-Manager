@@ -99,7 +99,7 @@ namespace AlbanianXrm.CustomizationManager
             }
         }
 
-        internal void MnuRefreshSolutions_Click(object sender, EventArgs e)
+        internal virtual void MnuRefreshSolutions_Click(object sender, EventArgs e)
         {
             toolViewModel.SolutionsFilter_Enabled = false;
             AsyncWorkQueue.Enqueue(new WorkAsyncWrapper()
@@ -110,7 +110,7 @@ namespace AlbanianXrm.CustomizationManager
             });
         }
 
-        internal void CmbFilteringSolution_DropDown(object sender, EventArgs e)
+        internal virtual void CmbFilteringSolution_DropDown(object sender, EventArgs e)
         {
             if (cmbFilteringSolution.Items.Count != 0)
             {
@@ -119,7 +119,7 @@ namespace AlbanianXrm.CustomizationManager
             MnuRefreshSolutions_Click(sender, e);
         }
 
-        internal void CmbFilteringSolution_SelectedValueChanged(object sender, EventArgs e)
+        internal virtual void CmbFilteringSolution_SelectedValueChanged(object sender, EventArgs e)
         {
             if (!(cmbFilteringSolution.SelectedItem is Solution selectedSolution))
             {
@@ -134,7 +134,7 @@ namespace AlbanianXrm.CustomizationManager
             }); ;
         }
 
-        internal void RefreshSolutionList(BackgroundWorker worker, DoWorkEventArgs args)
+        internal virtual void RefreshSolutionList(BackgroundWorker worker, DoWorkEventArgs args)
         {
             var service = OrganizationService;
             var query = new QueryExpression(Solution.EntityLogicalName)
@@ -144,19 +144,19 @@ namespace AlbanianXrm.CustomizationManager
             args.Result = service.RetrieveAll(query);
         }
 
-        internal void RefreshSolutionList(RunWorkerCompletedEventArgs args)
+        internal virtual void RefreshSolutionList(RunWorkerCompletedEventArgs args)
         {
             var response = args.Result as List<Entity>;
+            if (!(cmbFilteringSolution.SelectedItem is Solution selectedSolution))
+            {
+                selectedSolution = new Solution() { UniqueName = "Default" };
+            }
             toolViewModel.Solutions.Clear();
             foreach (var solution in response)
             {
                 toolViewModel.Solutions.Add(solution.ToEntity<Solution>());
             }
-            toolViewModel.SolutionsFilter_Enabled = true;
-            if (!(cmbFilteringSolution.SelectedItem is Solution selectedSolution))
-            {
-                selectedSolution = new Solution() { UniqueName = "Default" };
-            }
+            toolViewModel.SolutionsFilter_Enabled = true;       
             selectedSolution = toolViewModel.Solutions.FirstOrDefault(s => s.UniqueName == selectedSolution.UniqueName);
             if (selectedSolution == null)
             {
@@ -165,7 +165,7 @@ namespace AlbanianXrm.CustomizationManager
             cmbFilteringSolution.SelectedItem = selectedSolution;
         }
 
-        internal void RefreshSolutionComponentList(BackgroundWorker worker, DoWorkEventArgs args)
+        internal virtual void RefreshSolutionComponentList(BackgroundWorker worker, DoWorkEventArgs args)
         {
             var service = OrganizationService;
             var solutionId = (args.Argument as Solution).Id;
@@ -177,7 +177,7 @@ namespace AlbanianXrm.CustomizationManager
             args.Result = service.RetrieveAll(query);
         }
 
-        internal void RefreshSolutionComponentList(RunWorkerCompletedEventArgs args)
+        internal virtual void RefreshSolutionComponentList(RunWorkerCompletedEventArgs args)
         {
             var response = args.Result as List<Entity>;
             toolViewModel.SolutionComponents.Clear();
