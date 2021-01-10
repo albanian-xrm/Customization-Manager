@@ -88,12 +88,11 @@ namespace AlbanianXrm.CustomizationManager
             this.ResumeLayout(false);
 
         }
-
-        private System.Windows.Forms.ListBox lstSolutionItems;
-        private System.Windows.Forms.ComboBox cmbFilteringSolution;
         private System.Windows.Forms.TableLayoutPanel pnlContainer;
         private System.Windows.Forms.ContextMenuStrip cmnFilteringSolution;
         private System.ComponentModel.IContainer components;
         private System.Windows.Forms.ToolStripMenuItem mnuRefreshSolutions;
+        internal System.Windows.Forms.ComboBox cmbFilteringSolution;
+        internal System.Windows.Forms.ListBox lstSolutionItems;
     }
 }
