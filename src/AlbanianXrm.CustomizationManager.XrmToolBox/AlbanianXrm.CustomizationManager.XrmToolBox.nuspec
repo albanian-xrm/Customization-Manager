@@ -24,6 +24,5 @@ v$version$: Working on Minimum Viable Product
   </metadata>
   <files>
     <file src="bin\Release\net462\XrmToolBox\plugins\AlbanianXrm.CustomizationManager.dll" target="lib\net462\plugins" />
-    <file src="bin\Release\net462\XrmToolBox\plugins\AlbanianXrm.CustomizationManager\AlbanianXrm.CustomizationManager.Tool.dll" target="lib\net462\plugins\AlbanianXrm.CustomizationManager" />
   </files>
 </package>
