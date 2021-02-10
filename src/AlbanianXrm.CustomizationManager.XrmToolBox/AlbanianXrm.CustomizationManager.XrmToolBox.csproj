@@ -44,13 +44,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="ILMerge" Version="3.0.41" />
+    <PackageReference Include="ILMerge.MSBuild.Task" Version="1.0.7" />
     <PackageReference Include="XrmToolBoxPackage" Version="1.2020.12.43" />
     <PackageReference Include="Microsoft.IdentityModel" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AlbanianXrm.CustomizationManager.Tool\AlbanianXrm.CustomizationManager.Tool.csproj" />
+    <ProjectReference Include="..\AlbanianXrm.CustomizationManager.Tool\AlbanianXrm.CustomizationManager.Tool.csproj">
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="IF NOT EXIST $(TargetDir)XrmToolBox mkdir $(TargetDir)XrmToolBox&#xD;&#xA;IF NOT EXIST $(TargetDir)XrmToolBox\Plugins mkdir $(TargetDir)XrmToolBox\Plugins&#xD;&#xA;IF NOT EXIST $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager mkdir $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager&#xD;&#xA;&#xD;&#xA;move /Y $(TargetDir)AlbanianXrm.CustomizationManager.dll $(TargetDir)XrmToolBox\Plugins&#xD;&#xA;move /Y $(TargetDir)AlbanianXrm.CustomizationManager.Tool.dll $(TargetDir)XrmToolBox\Plugins\AlbanianXrm.CustomizationManager" />
+    <Exec Command="IF NOT EXIST $(TargetDir)XrmToolBox mkdir $(TargetDir)XrmToolBox&#xD;&#xA;IF NOT EXIST $(TargetDir)XrmToolBox\Plugins mkdir $(TargetDir)XrmToolBox\Plugins&#xD;&#xA;" />
   </Target>
  </Project>

@@ -14,6 +14,118 @@ namespace AlbanianXrm.CustomizationManager.Models
 	
 	
 	/// <summary>
+	/// For internal use only.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("importjob")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.67")]
+	public partial class ImportJob : Microsoft.Xrm.Sdk.Entity
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		public ImportJob() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "importjob";
+		
+		public const int EntityTypeCode = 9107;
+		
+		/// <summary>
+		/// Unique identifier of the import job.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importjobid")]
+		public System.Nullable<System.Guid> ImportJobId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("importjobid");
+			}
+			set
+			{
+				this.SetAttributeValue("importjobid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importjobid")]
+		public override System.Guid Id
+		{
+			get
+			{
+				return base.Id;
+			}
+			set
+			{
+				this.ImportJobId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Import Progress Percentage.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("progress")]
+		public System.Nullable<double> Progress
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<double>>("progress");
+			}
+			set
+			{
+				this.SetAttributeValue("progress", value);
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionname")]
+		public string SolutionName
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("solutionname");
+			}
+			set
+			{
+				this.SetAttributeValue("solutionname", value);
+			}
+		}
+		
+		public sealed class Fields
+		{
+			
+			/// <summary>
+			/// Unique identifier of the import job.
+			/// </summary>
+			public const string ImportJobId = "importjobid";
+			
+			public const string Id = "importjobid";
+			
+			/// <summary>
+			/// Import Progress Percentage.
+			/// </summary>
+			public const string Progress = "progress";
+			
+			/// <summary>
+			/// Unique identifier of the solution.
+			/// </summary>
+			public const string SolutionName = "solutionname";
+		}
+	}
+	
+	/// <summary>
 	/// A solution which contains CRM customizations.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]

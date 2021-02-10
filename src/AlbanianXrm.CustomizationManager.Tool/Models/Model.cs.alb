@@ -1,3 +1,8 @@
+╠╦═importjob
+║╠╦═Attributes
+║║╠═importjobid
+║║╠═progress
+║║╠═solutionname
 ╠╦═solution
 ║╠╦═Attributes
 ║║╠═friendlyname

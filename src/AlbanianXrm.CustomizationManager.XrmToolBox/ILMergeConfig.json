@@ -1,0 +1,13 @@
+{
+	"General": {
+		"OutputFile": "$(TargetDir)XrmToolBox\\Plugins\\$(TargetFileName)",
+		"InputAssemblies": [
+			"AlbanianXrm.CustomizationManager.Tool.dll"
+		]
+	},
+	"Advanced": {
+		"CopyAttributes": false,
+		"AttributeFile": "$(TargetDir)$(TargetFileName)",
+		"DeleteCopiesOverwriteTarget": true
+	}
+}

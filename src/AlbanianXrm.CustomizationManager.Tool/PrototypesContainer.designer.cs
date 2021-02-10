@@ -11,8 +11,8 @@ namespace AlbanianXrm.CustomizationManager
         {
             this.pnlContainer = new System.Windows.Forms.TableLayoutPanel();
             this.btnWebResources = new System.Windows.Forms.Button();
-            this.btnEntities = new System.Windows.Forms.Button();
             this.btnWhoAmI = new System.Windows.Forms.Button();
+            this.btnEntities = new System.Windows.Forms.Button();
             this.pnlContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,16 +44,7 @@ namespace AlbanianXrm.CustomizationManager
             this.btnWebResources.TabIndex = 5;
             this.btnWebResources.Text = "WebResources";
             this.btnWebResources.UseVisualStyleBackColor = true;
-            // 
-            // btnEntities
-            // 
-            this.btnEntities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEntities.Location = new System.Drawing.Point(3, 37);
-            this.btnEntities.Name = "btnEntities";
-            this.btnEntities.Size = new System.Drawing.Size(278, 28);
-            this.btnEntities.TabIndex = 4;
-            this.btnEntities.Text = "Entities";
-            this.btnEntities.UseVisualStyleBackColor = true;
+            this.btnWebResources.Click += new System.EventHandler(this.BtnWebresources_Click);
             // 
             // btnWhoAmI
             // 
@@ -64,6 +55,18 @@ namespace AlbanianXrm.CustomizationManager
             this.btnWhoAmI.TabIndex = 3;
             this.btnWhoAmI.Text = "Who Am I?";
             this.btnWhoAmI.UseVisualStyleBackColor = true;
+            this.btnWhoAmI.Click += new System.EventHandler(this.BtnWhoAmI_Click);
+            // 
+            // btnEntities
+            // 
+            this.btnEntities.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEntities.Location = new System.Drawing.Point(3, 37);
+            this.btnEntities.Name = "btnEntities";
+            this.btnEntities.Size = new System.Drawing.Size(278, 28);
+            this.btnEntities.TabIndex = 4;
+            this.btnEntities.Text = "Entities";
+            this.btnEntities.UseVisualStyleBackColor = true;
+            this.btnEntities.Click += new System.EventHandler(this.BtnEntities_Click);
             // 
             // PrototypesContainer
             // 

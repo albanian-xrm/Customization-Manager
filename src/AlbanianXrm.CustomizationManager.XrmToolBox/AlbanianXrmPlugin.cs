@@ -21,11 +21,6 @@ namespace AlbanianXrm.CustomizationManager
      ExportMetadata("SecondaryFontColor", "Gray")]
     public class AlbanianXrmPlugin : PluginBase
     {
-        public AlbanianXrmPlugin()
-        {
-            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(AssemblyResolveEventHandler);
-        }
-
         public override IXrmToolBoxPluginControl GetControl()
         {
             return new CustomizationManagerBridge();
@@ -39,7 +34,7 @@ namespace AlbanianXrm.CustomizationManager
         /// <param name="sender"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        private Assembly AssemblyResolveEventHandler(object sender, ResolveEventArgs args)
+        private static Assembly AssemblyResolveEventHandler(object sender, ResolveEventArgs args)
         {
             Assembly currAssembly = Assembly.GetExecutingAssembly();
             // base name of the assembly that failed to resolve
@@ -65,6 +60,11 @@ namespace AlbanianXrm.CustomizationManager
             {
                 throw new FileNotFoundException($"Unable to locate dependency: {assmbPath}");
             }
+        }
+
+        static AlbanianXrmPlugin()
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(AssemblyResolveEventHandler);
         }
     }
 }
